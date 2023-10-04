@@ -6,6 +6,7 @@ interface PrimaryInputProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
+  placeholder: string;
 }
 
 export default function PrimaryInput({
@@ -13,6 +14,7 @@ export default function PrimaryInput({
   value,
   onChange,
   label,
+  placeholder,
 }: PrimaryInputProps) {
   return (
     <div className="input-container">
@@ -21,7 +23,7 @@ export default function PrimaryInput({
       </label>
       <Input
         variant="filled"
-        placeholder="Digite seu e-mail"
+        placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
