@@ -3,7 +3,7 @@
   background: rgb(56, 161, 105);
   background: linear-gradient(
     90deg,
-    rgba(56, 161, 105, 0.4682466736694678) 0%,
+    rgba(56, 161, 105, 0.09569765406162467) 0%,
     rgba(56, 161, 105, 0.10690213585434172) 100%
   );
   border-radius: var(--border-radius-default);
