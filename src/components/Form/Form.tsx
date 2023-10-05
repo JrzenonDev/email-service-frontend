@@ -2,30 +2,37 @@ import { Button, Spacer } from "@chakra-ui/react";
 import PrimaryInput from "../Input/PrimaryInput";
 import { useState } from "react";
 import "./form.css";
+import { useIdentityMutation } from "../../hooks/useIdentityMutation";
 
 export function Form() {
   const [email, setEmail] = useState("");
-  const [firtName, setFirtName] = useState("");
-  const [secondName, setSecondName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+  const { mutate } = useIdentityMutation();
+
+  const submit = () => {
+    mutate({
+      email,
+      firstName,
+      lastName,
+    });
   };
 
   return (
     <form>
       <div className="input-name-form-container">
         <PrimaryInput
-          value={firtName}
-          onChange={handleChange}
-          name="firtName"
+          value={firstName}
+          onChange={(event) => setFirstName(event.target.value)}
+          name="firstName"
           label="Digite seu nome"
           placeholder="Seu primeiro nome"
         />
         <PrimaryInput
-          value={secondName}
-          onChange={handleChange}
-          name="secondName"
+          value={lastName}
+          onChange={(event) => setLastName(event.target.value)}
+          name="lastName"
           label="Digite seu sobrenome"
           placeholder="Seu sobrenome"
         />
@@ -33,13 +40,13 @@ export function Form() {
       <Spacer height="4" />
       <PrimaryInput
         value={email}
-        onChange={handleChange}
+        onChange={(event) => setEmail(event.target.value)}
         name="email"
         label="Digite seu e-mail"
         placeholder="seuemail@email.com"
       />
       <Spacer height="4" />
-      <Button colorScheme="green" width="100%">
+      <Button colorScheme="green" width="100%" onClick={submit}>
         Enviar
       </Button>
     </form>
